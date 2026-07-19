@@ -1,0 +1,16 @@
+node_modules
+dist
+__pycache__
+*.pyc
+*.pyo
+.git
+.gitignore
+.env
+.env.local
+.DS_Store
+*.log
+.vscode
+.idea
+test_*.py
+*.test.jsx
+*.spec.jsx
