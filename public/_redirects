@@ -1,1 +1,2 @@
-/api/* https://travel-planner-production-d703.up.railway.app/api/:splat 200!
+/api/* https://travel-planner-production-d703.up.railway.app/api/:splat 200
+/* /index.html 200
