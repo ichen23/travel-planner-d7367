@@ -37,10 +37,11 @@ const CITY_TYPE_NAMES = {
 
 export default function DestinationListPage() {
   const [params] = useSearchParams()
-  const [fromCity, setFromCity] = useState(params.get('from') || '')
-  const [date, setDate] = useState(params.get('date') || '')
-  const [duration, setDuration] = useState(Number(params.get('duration')) || 3)
-  const [preference, setPreference] = useState(params.get('preference') || '')
+  const defaultDate = new Date(Date.now() + 7*24*60*60*1000).toISOString().slice(0, 10)
+  const [fromCity, setFromCity] = useState(params.get('from') || localStorage.getItem('lastFromCity') || '北京')
+  const [date, setDate] = useState(params.get('date') || localStorage.getItem('lastDate') || defaultDate)
+  const [duration, setDuration] = useState(Number(params.get('duration')) || Number(localStorage.getItem('lastDuration')) || 3)
+  const [preference, setPreference] = useState(params.get('preference') || localStorage.getItem('lastPreference') || '')
   const [destinations, setDestinations] = useState([])
   const [loading, setLoading] = useState(false)
   const [searched, setSearched] = useState(false)
@@ -62,6 +63,10 @@ export default function DestinationListPage() {
       const result = await getRecommendations(fromCity, date, duration, preference)
       if (result.success) {
         setDestinations(result.destinations)
+        localStorage.setItem('lastFromCity', fromCity)
+        localStorage.setItem('lastDate', date)
+        localStorage.setItem('lastDuration', duration.toString())
+        localStorage.setItem('lastPreference', preference)
       } else {
         message.error('获取推荐失败')
       }
@@ -76,7 +81,7 @@ export default function DestinationListPage() {
     if (fromCity && date) {
       fetchData()
     }
-  }, [])
+  }, [fromCity, date])
 
   const filteredDestinations = useMemo(() => {
     let result = [...destinations]
