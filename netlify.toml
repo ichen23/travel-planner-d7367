@@ -6,7 +6,6 @@
   from = "/api/*"
   to = "https://travel-planner-production-d703.up.railway.app/api/:splat"
   status = 200
-  force = true
 
 [[redirects]]
   from = "/*"
