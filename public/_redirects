@@ -1,8 +1,0 @@
-# API 重定向
-/api/* https://travel-planner-production-d703.up.railway.app/api/:splat 200!
-
-# 根路径重定向
-/ /index.html 200!
-
-# 其他路径重定向 (SPA 支持)
-/* /index.html 200!
