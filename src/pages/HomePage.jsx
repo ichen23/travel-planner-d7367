@@ -1,9 +1,9 @@
-import { Row, Col, Card, Typography } from 'antd'
+import { Row, Col, Card, Typography, Tag } from 'antd'
 import { RocketOutlined, StarOutlined, ThunderboltOutlined, EnvironmentOutlined, CheckCircleOutlined } from '@ant-design/icons'
 import { useNavigate } from 'react-router-dom'
 import SearchBar from '../components/SearchBar'
 
-const { Title, Paragraph } = Typography
+const { Title, Paragraph, Text } = Typography
 
 const FEATURES = [
   { icon: <ThunderboltOutlined style={{ fontSize: 32, color: '#ff6b6b' }} />, title: '实时余票查询', desc: '12306数据源，秒级刷新余票状态' },
@@ -109,7 +109,7 @@ export default function HomePage() {
                 borderRadius: 20,
                 border: '1px solid #ff6b6b30',
               }}>
-                <Text style={{ color: '#ff6b6b', fontSize: 14 }}>🌟 连接 {100}+ 城市</Text>
+                <Text style={{ color: '#ff6b6b', fontSize: 14 }}>🌟 连接 1600+ 城市</Text>
               </div>
               <div style={{
                 padding: '12px 24px',
