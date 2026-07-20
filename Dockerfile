@@ -11,6 +11,6 @@ COPY --from=frontend-build /app/backend/requirements.txt .
 RUN pip install --no-cache-dir -r requirements.txt
 COPY backend ./backend
 COPY --from=frontend-build /app/dist ./backend/dist
-COPY .env.example ./backend/.env
+COPY backend/.env.example ./backend/.env
 WORKDIR /app/backend
 CMD ["sh", "-c", "uvicorn app.main:app --host 0.0.0.0 --port ${PORT:-8000}"]
