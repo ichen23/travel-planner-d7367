@@ -1,10 +1,9 @@
 import axios from 'axios'
 
-const isLocal = typeof window !== 'undefined' && window.location.hostname === 'localhost'
-const baseURL = isLocal ? 'http://localhost:8000/api' : '/api'
+const API_BASE_URL = 'https://travel-planner-production-d703.up.railway.app/api'
 
 const api = axios.create({
-  baseURL,
+  baseURL: API_BASE_URL,
   timeout: 15000,
 })
 
